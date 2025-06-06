@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="inicio">
+        <img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png" alt="Logo moderno usuario" class="logo-usuario">
+        <h2>Bienvenido a tu tienda</h2>
+
+        <form id="loginForm">
+            <label for="correo">Correo electrónico:</label><br>
+            <input type="email" id="correo" name="correo" placeholder="Digite el correo del usuario" required><br>
+
+            <label for="contraseña">Contraseña:</label><br>
+            <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña de usuario" required><br>
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+
+        <p class="parrafo">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+        <p class="parrafo"><a href="#">¿Olvidaste tu contraseña?</a></p>
+    </div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const correo = document.getElementById('correo').value.trim();
+        const contraseña = document.getElementById('contraseña').value.trim();
+
+        // ✅ Expresión regular: cualquier texto antes de @gmail.com
+        const formatoValido = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+        if (formatoValido.test(correo) && contraseña !== '') {
+            // Redirige al panel de control
+            window.location.href = 'Panel_control.html';
+        } else {
+            alert('El correo debe ser un Gmail válido y la contraseña no puede estar vacía.');
+        }
+    });
+</script>
+</body>
+</html>
